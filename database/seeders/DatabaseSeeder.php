@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Post::factory(20)->create();
+        Post::factory(100)->create();
 
         //$this->call(PostsTableSeeder::class);
     }
