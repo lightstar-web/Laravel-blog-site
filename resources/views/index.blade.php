@@ -9,8 +9,10 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-<div class="container w-full">
-    <h1 class="text-2xl text-red-600 bg-amber-400 font-bold p-3 text-center">Home page</h1>
+<div class="container w-100">
+    <a href="{{ route('blog.index') }}" class="text-2xl text-red-600 bg-amber-400 font-bold p-3 text-center">
+        Blogs
+    </a>
 </div>
 </body>
 </html>

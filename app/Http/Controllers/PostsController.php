@@ -16,7 +16,9 @@ class PostsController extends Controller
     public function index()
     {
         $posts = DB::table('posts')->get();
-        return view('blog.index')->with('posts', $posts);
+        return view('blog.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**
