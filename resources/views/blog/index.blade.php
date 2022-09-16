@@ -12,10 +12,10 @@
 <div class="w-100">
     @forelse($posts as $post)
         <h1 class=" title m-3 text-2xl text-white bg-emerald-600 font-bold p-3 text-center">
-            {{ $loop->index }}
+            {{ $post->min_to_read }}
         </h1>
     @empty
-        <h1 class=" title m-3 text-2xl text-red-800 bg-red-400 font-bold p-3 text-center">
+        <h1 class="title m-3 text-2xl text-red-800 bg-red-400 font-bold p-3 text-center">
             No posts !
         </h1>
     @endforelse

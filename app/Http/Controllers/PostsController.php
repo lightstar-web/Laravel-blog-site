@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')->get();
+        $posts = Post::orderBy('updated_at', 'desc')->get();
         return view('blog.index', [
             'posts' => $posts,
         ]);
@@ -49,7 +49,10 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return 'Not you are seeig blog #' . $id;
+        $post = Post::findOrFail($id);
+        return view('blog.show', [
+            'post' => $post,
+        ]);
     }
 
     /**
