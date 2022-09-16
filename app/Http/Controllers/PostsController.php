@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,11 +15,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')
-            ->whereIn('min_to_read', [6])
-            ->value('body');
-        dd($posts);
-        return view('blog.index');
+        $posts = DB::table('posts')->get();
+        return view('blog.index')->with('posts', $posts);
     }
 
     /**
