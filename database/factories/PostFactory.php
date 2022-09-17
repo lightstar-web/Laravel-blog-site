@@ -18,6 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->unique()->sentence(),
+            'user_id' => 1,
             'excerpt' => fake()->realText(50),
             'body' => fake()->paragraph(6),
             'image_path' => fake()->imageUrl(640, 480),
