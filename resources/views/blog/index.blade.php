@@ -8,17 +8,50 @@
     <title>Blog | Abdellatif Laghjaj</title>
     @vite('resources/css/app.css')
 </head>
-<body>
-<div class="w-100">
-    @forelse($posts as $post)
-        <h1 class=" title m-3 text-2xl text-white bg-emerald-600 font-bold p-3 text-center">
-            {{ $post->min_to_read }}
-        </h1>
-    @empty
-        <h1 class="title m-3 text-2xl text-red-800 bg-red-400 font-bold p-3 text-center">
-            No posts !
-        </h1>
-    @endforelse
+<body class="w-full h-full bg-gray-100">
+<div class=" mx-auto w-4/5 bg-indigo-600">
+    <div class="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center justify-between">
+            <div class="flex w-0 flex-1 items-center">
+                <p class="ml-3 truncate font-medium text-white">
+                    <span class="hidden md:inline font-bold text-2xl">All Blogs</span>
+                </p>
+            </div>
+            <div class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
+                <a href="#"
+                   class="flex items-center justify-center font-bold rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50">
+                    Add new blog
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+@foreach($posts as $post)
+    <!-- Card 1 -->
+    <div class=" grid w-4/5 mx-auto col-span-4 relative my-3">
+        <a class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9"
+           href="{{ route('blog.show', $post->id) }}">
+
+            <!-- Title -->
+            <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">
+                {{ $post->title }}
+            </p>
+
+            <!-- Description -->
+            <p class="text-sm font-semibold text-gray-500 group-hover:text-gray-700 mt-2 leading-6">
+                {{ $post->excerpt }}
+            </p>
+
+            <p class="text-sm font-semibold text-gray-500 group-hover:text-gray-700 mt-2 leading-6">
+                Added <span class=" text-blue-600">{{ $post->created_at->diffForHumans() }}</span>
+            </p>
+
+            <!-- Color -->
+            <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"></div>
+        </a>
+    </div>
+@endforeach
 </body>
 </html>
