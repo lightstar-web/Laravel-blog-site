@@ -31,8 +31,7 @@
 @foreach($posts as $post)
     <!-- Card 1 -->
     <div class=" grid w-4/5 mx-auto col-span-4 relative my-3 rounded-lg">
-        <a class="group shadow-lg hover:shadow-2xl duration-200 delay-75 rounded-lg w-full bg-white rounded-sm py-6 pr-6 pl-9"
-           href="{{ route('blog.show', $post->id) }}">
+        <div class="group shadow-lg hover:shadow-2xl duration-200 delay-75 rounded-lg w-full bg-white rounded-sm py-6 pr-6 pl-9">
 
             <!-- Title -->
             <p class="text-2xl font-bold text-gray-500 group-hover:text-gray-700">
@@ -48,9 +47,21 @@
                 Added <span class=" text-blue-600">{{ $post->created_at->diffForHumans() }}</span>
             </p>
 
+            <div class="btns mt-3">
+                <a href="{{ route('blog.show', $post->id) }}" class="mt-2 mr-2 bg-blue-500 py-2 px-4 rounded-md text-white">
+                    View
+                </a>
+                <a href="{{ route('blog.edit', $post->id) }}" class="mt-2 mr-2 bg-green-500 py-2 px-4 rounded-md text-white">
+                    Edit
+                </a>
+                <a href="#" class="mt-2 bg-red-500 py-2 px-4 rounded-md text-white">
+                    Delete
+                </a>
+            </div>
+
             <!-- Color -->
             <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"></div>
-        </a>
+        </div>
     </div>
 @endforeach
 </body>

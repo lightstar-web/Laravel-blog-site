@@ -80,7 +80,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('blog.edit', [
+            'post' => $post,
+        ]);
     }
 
     /**
@@ -92,7 +95,25 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::where('id', $id)->firstOrFail();
+        $request->validate([
+            'title' => 'required|unique:posts',
+            'excerpt' => 'required',
+            'body' => 'required',
+            'min_to_read' => 'min:1|max:30',
+            'image' => ['mimes:jpg,png,jpeg', 'max:1024'],
+        ]);
+
+        $post->update([
+            'title' => $request->title,
+            'excerpt' => $request->excerpt,
+            'body' => $request->body,
+            'min_to_read' => $request->min_to_read,
+            'image_path' => $request->image ? $this->storeImage($request) : $post->image_path,
+            'is_published' => $request->is_published == 'on' ? true : false,
+        ]);
+
+        return redirect()->route('blog.index');
     }
 
     /**
