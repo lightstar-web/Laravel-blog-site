@@ -78,6 +78,9 @@
     </div>
     </div>
 @endforeach
+<div class="w-4/5 p-3 mx-auto">
+    {{ $posts->links() }}
+</div>
 </body>
 
 <script>
