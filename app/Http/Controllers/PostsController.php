@@ -44,7 +44,7 @@ class PostsController extends Controller
             'excerpt' => $request->excerpt,
             'body' => $request->body,
             'min_to_read' => $request->min_to_read,
-            'image_path' => 'https://picsum.photos/200/300',
+            'image_path' => $this->storeImage($request),
             'is_published' => $request->is_published == 'on' ? true : false,
         ]);
 
@@ -96,5 +96,13 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //store the images
+    private function storeImage($request)
+    {
+        $new_image_name = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+
+        return $request->image->move(public_path('images'), $new_image_name);
     }
 }
