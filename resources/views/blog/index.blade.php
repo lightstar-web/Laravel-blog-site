@@ -51,7 +51,8 @@
             </p>
 
             <p class="text-sm font-semibold text-gray-500 group-hover:text-gray-700 mt-2 leading-6">
-                Updated <span class=" text-blue-600">{{ $post->updated_at->diffForHumans() }}</span>
+                Added by <span
+                    class=" text-blue-600">{{ $post->user->name }}</span> {{ $post->updated_at->diffForHumans() }}
             </p>
 
             <div class="btns mt-3 flex flex-row">

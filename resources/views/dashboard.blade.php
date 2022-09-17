@@ -11,6 +11,16 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in!
                 </div>
+
+                <div>
+                    <h1 class="text-xl font-bold pt-8 pb-2">
+                        Posts of: {{ Auth::user()->name }}
+                    </h1>
+
+                    @foreach(Auth::user()->posts as $post)
+                        <h2>{{ $post->title }}</h2>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

@@ -16,4 +16,14 @@ class Post extends Model
         'is_published'
     ];
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function meta()
+    {
+        return $this->hasOne(PostMeta::class);
+    }
 }
