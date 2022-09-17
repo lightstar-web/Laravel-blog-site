@@ -9,7 +9,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="w-full h-full bg-gray-100">
-<div class=" mx-auto w-4/5 bg-indigo-600">
+<div class=" mx-auto w-4/5 bg-indigo-600 mt-2 rounded-lg">
     <div class="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center justify-between">
             <div class="flex w-0 flex-1 items-center">
@@ -18,7 +18,7 @@
                 </p>
             </div>
             <div class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
-                <a href="#"
+                <a href="{{ route('blog.create') }}"
                    class="flex items-center justify-center font-bold rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50">
                     Add new blog
                 </a>
@@ -30,8 +30,8 @@
 
 @foreach($posts as $post)
     <!-- Card 1 -->
-    <div class=" grid w-4/5 mx-auto col-span-4 relative my-3">
-        <a class="group shadow-lg hover:shadow-2xl duration-200 delay-75 w-full bg-white rounded-sm py-6 pr-6 pl-9"
+    <div class=" grid w-4/5 mx-auto col-span-4 relative my-3 rounded-lg">
+        <a class="group shadow-lg hover:shadow-2xl duration-200 delay-75 rounded-lg w-full bg-white rounded-sm py-6 pr-6 pl-9"
            href="{{ route('blog.show', $post->id) }}">
 
             <!-- Title -->
