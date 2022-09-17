@@ -97,7 +97,7 @@ class PostsController extends Controller
     {
         $post = Post::where('id', $id)->firstOrFail();
         $request->validate([
-            'title' => 'required|unique:posts',
+            'title' => 'required|max:255|unique:posts,title,' . $id,
             'excerpt' => 'required',
             'body' => 'required',
             'min_to_read' => 'min:1|max:30',
