@@ -40,6 +40,8 @@ class PostsController extends Controller
      */
     public function store(PostFormRequest $request)
     {
+        dd($request->all());
+        exit();
         $request->validated();
 
         Post::create([
