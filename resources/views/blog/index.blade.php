@@ -27,6 +27,12 @@
     </div>
 </div>
 
+@if(session()->has('message'))
+    <div id="message"
+         class=" mx-auto w-4/5 my-3 py-3 px-4 bg-green-400 text-green-800 flex items-center justify-center font-bold rounded-lg">
+        {{ session()->get('message') }}
+    </div>
+@endif
 
 @foreach($posts as $post)
     <!-- Card 1 -->
@@ -48,7 +54,7 @@
                 Updated <span class=" text-blue-600">{{ $post->updated_at->diffForHumans() }}</span>
             </p>
 
-            <div class="btns mt-3">
+            <div class="btns mt-3 flex flex-row">
                 <a href="{{ route('blog.show', $post->id) }}"
                    class="mt-2 mr-2 bg-blue-500 py-2 px-4 rounded-md text-white">
                     View
@@ -57,16 +63,28 @@
                    class="mt-2 mr-2 bg-green-500 py-2 px-4 rounded-md text-white">
                     Edit
                 </a>
-                <a href="#" class="mt-2 bg-red-500 py-2 px-4 rounded-md text-white">
-                    Delete
-                </a>
+                <form action="{{ route('blog.destroy', $post->id) }}" method="POST">
+                    @csrf()
+                    @method('DELETE')
+                    <button type="submit" class="mt-2 bg-red-500 py-2 px-4 rounded-md text-white">
+                        Delete
+                    </button>
+                </form>
             </div>
 
             <!-- Color -->
             <div class="bg-blue-400 group-hover:bg-blue-600 h-full w-4 absolute top-0 left-0"></div>
-            </div>
         </div>
+    </div>
     </div>
 @endforeach
 </body>
+
+<script>
+    const message = document.getElementById('message');
+    setTimeout(() => {
+        message.style.display = 'none';
+    }, 3000);
+</script>
+
 </html>
