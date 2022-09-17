@@ -39,16 +39,14 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-
-        $post->title = $request->title;
-        $post->excerpt = $request->excerpt;
-        $post->body = $request->body;
-        $post->min_to_read = $request->min_to_read;
-        $post->image_path = 'https://picsum.photos/200/300';
-        $post->is_published = $request->is_published == 'on' ? true : false;
-
-        $post->save();
+        Post::create([
+            'title' => $request->title,
+            'excerpt' => $request->excerpt,
+            'body' => $request->body,
+            'min_to_read' => $request->min_to_read,
+            'image_path' => 'https://picsum.photos/200/300',
+            'is_published' => $request->is_published == 'on' ? true : false,
+        ]);
 
         return redirect()->route('blog.index');
     }
