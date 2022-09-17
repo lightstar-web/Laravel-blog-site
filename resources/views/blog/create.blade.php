@@ -15,6 +15,7 @@
             <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Create a blog</h2>
         </div>
         <form class="mt-8 space-y-6" action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf()
             <input type="hidden" name="remember" value="true">
             <div class="-space-y-px rounded-md shadow-sm">
                 <div class="my-2">
@@ -27,14 +28,14 @@
                 <div class="my-2">
                     <label for="excerpt" class="sr-only">Excerpt</label>
                     <input id="excerpt" name="excerpt" type="text" autocomplete="excerpt" required
-                           class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                           class="relative my-2 block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                            placeholder="Blog Excerpt">
                 </div>
 
                 <div class="my-2">
                     <label for="body" class="sr-only">Body</label>
                     <textarea id="body" name="body" type="text" autocomplete="body" required
-                              class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                              class="relative my-2 block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               placeholder="Blog Body"></textarea>
                 </div>
 
