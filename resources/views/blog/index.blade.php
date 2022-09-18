@@ -17,12 +17,21 @@
                     <span class="hidden md:inline font-bold text-2xl">All Blogs</span>
                 </p>
             </div>
-            <div class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
-                <a href="{{ route('blog.create') }}"
-                   class="flex items-center justify-center font-bold rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50">
-                    Add new blog
-                </a>
-            </div>
+            @if(auth()->user())
+                <div class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
+                    <a href="{{ route('blog.create') }}"
+                       class="flex items-center justify-center font-bold rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50">
+                        Add new blog
+                    </a>
+                </div>
+            @else
+                <div class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
+                    <a href="{{ route('login') }}"
+                       class="flex items-center justify-center font-bold rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50">
+                        Login
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
 </div>
@@ -60,17 +69,19 @@
                    class="mt-2 mr-2 bg-blue-500 py-2 px-4 rounded-md text-white">
                     View
                 </a>
-                <a href="{{ route('blog.edit', $post->id) }}"
-                   class="mt-2 mr-2 bg-green-500 py-2 px-4 rounded-md text-white">
-                    Edit
-                </a>
-                <form action="{{ route('blog.destroy', $post->id) }}" method="POST">
-                    @csrf()
-                    @method('DELETE')
-                    <button type="submit" class="mt-2 bg-red-500 py-2 px-4 rounded-md text-white">
-                        Delete
-                    </button>
-                </form>
+                @if(auth()->user() && auth()->id() === $post->user_id )
+                    <a href="{{ route('blog.edit', $post->id) }}"
+                       class="mt-2 mr-2 bg-green-500 py-2 px-4 rounded-md text-white">
+                        Edit
+                    </a>
+                    <form action="{{ route('blog.destroy', $post->id) }}" method="POST">
+                        @csrf()
+                        @method('DELETE')
+                        <button type="submit" class="mt-2 bg-red-500 py-2 px-4 rounded-md text-white">
+                            Delete
+                        </button>
+                    </form>
+                @endif
             </div>
 
             <!-- Color -->
