@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'post_id',
+        'user_id',
         'title',
         'excerpt',
         'body',
@@ -26,5 +26,10 @@ class Post extends Model
     public function meta()
     {
         return $this->hasOne(PostMeta::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }

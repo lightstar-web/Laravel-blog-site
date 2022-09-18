@@ -111,6 +111,12 @@ class PostsController extends Controller
             'is_published' => $request->is_published == 'on' ? true : false,
         ]);
 
+        $post->meta()->update([
+            'meta_description' => $request->meta_description,
+            'meta_keywords' => $request->meta_keywords,
+            'meta_robots' => $request->meta_robots,
+        ]);
+
         return redirect()->route('blog.index');
     }
 

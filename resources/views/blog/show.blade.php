@@ -24,6 +24,13 @@
         {{ $post->title }}
     </h4>
 
+    <h4 class="font-bold py-4">Categories:</h4>
+
+    @foreach($post->categories as $category)
+        <span class="px-4 py-2 mr-2 rounded-md bg-yellow-500 text-white">
+            {{ $category->title }}
+        </span>
+    @endforeach
     <div class="pt-10 pb-10 text-gray-900 text-xl">
         <p class="font-bold text-2xl text-black pt-10">
             {{ $post->excerpt }}

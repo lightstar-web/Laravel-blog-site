@@ -69,6 +69,30 @@
                            class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                            placeholder="Blog reading duration" value="{{ $post->min_to_read }}">
                 </div>
+
+                <div class="my-2">
+                    <label for="title" class="sr-only">Meta description</label>
+                    <input id="meta_description" name="meta_description" type="text" autocomplete="meta_description"
+                           class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                           placeholder="Meta description"
+                           value="{{ $post->meta->meta_description }}">
+                </div>
+
+                <div class="my-2">
+                    <label for="title" class="sr-only">Meta keywords</label>
+                    <input id="meta_keywords" name="meta_keywords" type="text" autocomplete="meta_keywords"
+                           class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                           placeholder="Meta keywords (comma separated)"
+                           value="{{ $post->meta->meta_keywords }}">
+                </div>
+
+                <div class="my-2">
+                    <label for="title" class="sr-only">Meta robots</label>
+                    <input id="meta_robots" name="meta_robots" type="text" autocomplete="meta_robots"
+                           class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                           placeholder="Meta robots (comma )"
+                           value="{{ $post->meta->meta_robots }}">
+                </div>
             </div>
 
             <div class="flex items-center justify-between">
