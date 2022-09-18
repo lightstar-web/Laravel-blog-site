@@ -12,34 +12,47 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-<div class="w-4/5 mx-auto">
-    <div class="pt-10">
-        <a href="{{ URL::previous() }}"
-           class="text-green-500 italic hover:text-green-400 hover:border-b-2 border-green-400 pb-3 transition-all py-20">
-            < Back to previous page
-        </a>
+<!-- component -->
+<section class="bg-white h-screen dark:bg-gray-900">
+    <div class="container px-6 py-10 mx-auto">
+        <div class="mt-8 lg:-mx-6 lg:flex lg:items-center">
+            <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
+                 src="{{ $post->image_path }}"
+                 alt="">
+
+            <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                @foreach($post->categories as $category)
+                    <span class="px-4 py-2 bg-yellow-400 text-white rounded-md mr-2">
+                        {{ $category->title }}
+                    </span>
+                @endforeach
+
+                <a href="#"
+                   class="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl">
+                    {{ $post->title }}
+                </a>
+
+                <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                    {{ $post->excerpt }}
+                </p>
+
+                <p class="mt-3 text-sm font-bold text-gray-500 dark:text-gray-300 md:text-sm">
+                    {{ $post->body }}
+                </p>
+
+                <div class="flex items-center mt-6">
+                    <img class="object-cover object-center w-10 h-10 rounded-full"
+                         src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                         alt="">
+
+                    <div class="mx-4">
+                        <h1 class="text-sm text-gray-700 dark:text-gray-200">{{  $post->user->name }}</h1>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ $post->updated_at->diffForHumans() }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <h4 class="text-left sm:text-center text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 py-10 sm:py-20">
-        {{ $post->title }}
-    </h4>
-
-    <h4 class="font-bold py-4">Categories:</h4>
-
-    @foreach($post->categories as $category)
-        <span class="px-4 py-2 mr-2 rounded-md bg-yellow-500 text-white">
-            {{ $category->title }}
-        </span>
-    @endforeach
-    <div class="pt-10 pb-10 text-gray-900 text-xl">
-        <p class="font-bold text-2xl text-black pt-10">
-            {{ $post->excerpt }}
-        </p>
-
-        <p class="text-base text-black pt-10">
-            {{ $post->body }}
-        </p>
-    </div>
-</div>
+</section>
 </body>
 </html>
